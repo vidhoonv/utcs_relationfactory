@@ -1,0 +1,107 @@
+RelationFactory is relation extraction and knowledge base population system that top ranked in TAC KBP 2013 English Slot Filling task.
+
+It is shared at:
+https://github.com/beroth/relationfactory
+
+This repo contains this system with all changes required to build and run it on UT CS machines and cluster nodes.
+
+Note:
+=====
+
+At the moment, the system cannot be built in cluster node since cabal is not installed. Hence, the system is built in a local machine and then copied to cluster node for running it. 
+
+TO DO:
+======
+
+Enable running the system through CONDOR
+
+List of changes: [See caution statement at the end]
+===============
+
+Changes required for building the system:
+=========================================
+
+1) settings.sh - contains all environment variables that need to be exported for running the system
+
+2) models directory - should contain all models to be used by the system (not added in the repo). Download from:
+	wget http://www.lsv.uni-saarland.de/data/relationfactory_models.tar.gz
+	tar xzf relationfactory_models.tar.gz
+
+3) cabal installation
+
+cabal is not installed in UT CS machines. Request gripe or install it using this link:
+http://www.haskell.org/cabal/download.html
+
+Then, add the path to installed binary to system path 
+
+4) components/pipeline/build.sh and makefile
+
+components/pipeline/build.sh has the following shell variables:
+
+*JAVA_HOME - path to oracle java (required by the system)
+*LOCALCLASSPATH - path to tools.jar and ant libs (notice the /* at the end)
+*ANT_HOME - path to ANT 
+
+This has been set according to UT CS machines. 
+But make sure that they are valid before building the system.
+
+
+Indexing changes
+=================
+
+the makefile for indexing needs to have proper path set for the corpus
+
+*corpuspath
+*corpusdatapath
+*corpusdoclistspath
+*indexname
+
+All these variables need to set to proper values based on the location of data in your system.
+
+In this repo, corpus is not included. A sample indexing setup used for 2013 corpus is included for use.
+
+Changes required to run the system
+==================================
+
+1) Evaluation changes
+
+The system requires evaluation queries. This is obtained from:
+
+http://www.nist.gov/tac/2013/KBP/data.html
+
+for KBP 2013 and is included in the repo for sample.
+
+It is included in the path:
+/path/to/relationfactory/evaluation/queries 
+
+This file is supplied in config file to run the system. See next point for further details.
+
+2) config file changes
+
+The following variables need to be properly set in the config file that is supplied for running the system:
+
+*path to queries file for evaluation
+*path to index (check output of indexing)
+*path to idfile_mapping (check output of indexing)
+*path to run directory (to store run output)
+
+
+Caution:
+========
+
+It is not expected that this repo can be directly cloned to run the system. This repo identifies changes that need to be made to run relationfactory on UT CS machines. While some changes done are reusable, most changes are user dependent and hence, please go through the entire list of changes and make sure you make appropriate corrections according to your system setup.
+
+How to build and run the system
+===============================
+
+Refer path/to/relationfactory/README for complete details.
+** The only difference is after building the system if you want to run in cluster:
+push repo to cluster, change all paths for running system to paths in cluster node and then do indexing and run the system.
+
+Disclaimer
+==========
+
+The relationfactory system was cloned from:
+https://github.com/beroth/relationfactory
+
+This repo only focuses on changes required to run the system on UT CS machines. We thank LSV folks for being kind enough to share their top ranked KBP system on github. 
