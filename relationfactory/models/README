@@ -1,0 +1,6 @@
+Downloading models:
+
+If you want to use pre-trained models, download them from:
+
+wget http://www.lsv.uni-saarland.de/data/relationfactory_models.tar.gz
+tar xzf relationfactory_models.tar.gz
