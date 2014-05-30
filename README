@@ -10,10 +10,17 @@ Note:
 
 At the moment, the system cannot be built in cluster node since cabal is not installed. Hence, the system is built in a local machine and then copied to cluster node for running it. 
 
-TO DO:
-======
+Running the system on condor:
+============================
 
-Enable running the system through CONDOR
+Now, it is possible to run the system on condor also:
+
+cd /path/to/relationfactory
+
+Run:
+/condorizer-16G.py $TAC_ROOT/bin/run.sh <config_file> <outfile>
+
+
 
 List of changes: [See caution statement at the end]
 ===============
