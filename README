@@ -49,7 +49,10 @@ But make sure that they are valid before building the system.
 Indexing changes
 =================
 
-the makefile for indexing needs to have proper path set for the corpus
+the makefile provided in the actual repository produced errors.
+So it is replaced with build_index.sh.
+
+this script for indexing needs to have proper path set for the corpus
 
 *corpuspath
 *corpusdatapath
@@ -57,6 +60,7 @@ the makefile for indexing needs to have proper path set for the corpus
 *indexname
 
 All these variables need to set to proper values based on the location of data in your system.
+Refer indexing/README for more info on this.
 
 In this repo, corpus is not included. A sample indexing setup used for 2013 corpus is included for use.
 

@@ -1,3 +1,24 @@
+UT CS changes:
+=============
+
+There were some mistakes in makefile which were throwing errors while creating index.
+Replaced makefile with build_index.sh
+
+Use it as follows:
+
+sh build_index.sh
+
+This script does not remove/overwrite if index/idfile_mapping are already present.
+So, remove them if indexing needs to be re run for some reason.
+
+Use the build_index.sh script in the same way as 'makefile' was used in the old 
+indexing setup. (Follow OLD README contents below. Just replace makefilw with build_index.sh.
+
+====================================================================================
+
+OLD README contents below:
+>>>>>>>>>>>>>>>>>>>>>>>>>
+
 This directory contains the makefile to index the TAC 2013 corpora.
 
 For creating the index:
