@@ -1,0 +1,4 @@
+Commands to run evaluation:
+
+
+java SFScore path/to/rundir/response_fast_pp13 path/to/key_file slots=path/to/slot_file
